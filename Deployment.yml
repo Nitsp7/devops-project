@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: kubemubin/devops-project-one
+          image: nits07/devops-project
           ports:
             - containerPort: 80
