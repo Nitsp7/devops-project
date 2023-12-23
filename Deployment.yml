@@ -1,12 +1,11 @@
-kind: Deployment
 apiVersion: apps/v1
+kind: Deployment
 metadata:
-   name: mrdevops
+  name: myfirstdevopsappdeployment
 spec:
-   replicas: 2
-   selector:      # tells the controller which pods to watch/belong to
+  replicas: 5
+  selector:
     matchLabels:
-<<<<<<< HEAD
       name: myapp
   template:
     metadata:
@@ -16,17 +15,5 @@ spec:
       containers:
         - name: myapp
           image: nits07/devops-project
-=======
-     app: mrdevops
-   template:
-      metadata:
-        labels:
-          app: mrdevops
-      spec:
-       containers:
-        - name: mrdevops
-          image: nits07/devops-project
-          imagePullPolicy: Always
->>>>>>> 39b5fcd (1)
           ports:
-          - containerPort: 80
+            - containerPort: 80
