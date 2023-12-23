@@ -1,16 +1,14 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: myfirstdevopsservice
+  name: mrdevops
+  labels:
+    app: mrdevops
 spec:
-  selector:
-    name: myapp
   ports:
-    - protocol: TCP
-      # Port accessible inside cluster
-      port: 80
-      # Port to forward to inside the pod
+    - port: 8080
       targetPort: 80
-      # Port accessible outside cluster
-      nodePort: 30000
-  type: NodePort
+      nodePort: 31200
+  selector:
+    app: mrdevops
+  type: LoadBalancer
