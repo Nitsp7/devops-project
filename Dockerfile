@@ -1,12 +1,12 @@
-FROM  centos:latest
-MAINTAINER ditiss76@gmail.com
-RUN yum install -y httpd \
- zip\
- unzip
-ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
-WORKDIR /var/www/html/
-RUN unzip photogenic.zip
-RUN cp -rvf photogenic/* .
-RUN rm -rf photogenic photogenic.zip
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
-EXPOSE 80 22
+FROM centos:latest
+RUN cd /etc/yum.repos.d/
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+RUN yum install httpd wget zip unzip -y
+ADD https://www.tooplate.com/zip-templates/2121_wave_cafe.zip /var/www/html
+WORKDIR /var/www/html
+RUN unzip -o 2121_wave_cafe.zip
+RUN cp -r 2121_wave_cafe/* .
+RUN rm -rf 2121_wave_cafe 2121_wave_cafe.zip
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+EXPOSE 80 30000
